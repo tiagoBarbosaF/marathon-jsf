@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <f:view>
+        <h:outputLabel value="Hello world, finally!"/><br/>
+        <h:outputText value="First name:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.firstName}"/><br/><br/>
+        <h:outputText value="Last name:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.lastName}"/><br/><br/>
+        <h:outputText value="Grade 1 equal Grade 2:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1 eq studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputText value="Grade 1 equal Grade 2:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1 == studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputText value="Grade 1 equal Grade 2 and first name is 'tiago':"/><br/>
+        <h:outputLabel
+                value="#{studentBeanRecord.grade1 eq studentBeanRecord.grade2 and studentBeanRecord.firstName.equalsIgnoreCase('tiago')}"/><br/><br/>
+        <h:outputText value="Comparing grades"/><br/><br/>
+        <h:outputText value="Grade 1 less than and equal Grade 2:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1 le studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputText value="If Grade 1 equals zero than zero else not zero:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1 eq 0 ? 'zero' : 'not zero'}"/><br/><br/>
+        <h:outputText value="Grade 1 = 40:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1 = 40}"/><br/><br/>
+        <h:outputText value="Grade 1:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.grade1}"/><br/><br/>
+        <h:outputText value="Concatenation:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.firstName += ' ' += studentBeanRecord.lastName}"/><br/><br/>
+<!--        Reserved words: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod-->
+    </f:view>
+</h:body>
+</html>
