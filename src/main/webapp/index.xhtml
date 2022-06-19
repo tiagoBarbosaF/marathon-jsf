@@ -4,33 +4,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:body>
+    <p:importEnum type="tiagobarbosa.marathonjsf.model.enums.Shift" var="Shift" allSuffix="ALL_ENUM_VALUES"/>
     <f:view>
         <h:outputLabel value="Hello world, finally!"/><br/>
         <h:outputText value="First name:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.firstName}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.firstName}"/><br/><br/>
         <h:outputText value="Last name:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.lastName}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.lastName}"/><br/><br/>
         <h:outputText value="Grade 1 equal Grade 2:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1 eq studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1 eq studentBeanRecord.student.grade2}"/><br/><br/>
         <h:outputText value="Grade 1 equal Grade 2:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1 == studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1 == studentBeanRecord.student.grade2}"/><br/><br/>
         <h:outputText value="Grade 1 equal Grade 2 and first name is 'tiago':"/><br/>
         <h:outputLabel
-                value="#{studentBeanRecord.grade1 eq studentBeanRecord.grade2 and studentBeanRecord.firstName.equalsIgnoreCase('tiago')}"/><br/><br/>
+                value="#{studentBeanRecord.student.grade1 eq studentBeanRecord.student.grade2 and studentBeanRecord.student.firstName.equalsIgnoreCase('tiago')}"/><br/><br/>
         <h:outputText value="Comparing grades"/><br/><br/>
         <h:outputText value="Grade 1 less than and equal Grade 2:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1 le studentBeanRecord.grade2}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1 le studentBeanRecord.student.grade2}"/><br/><br/>
         <h:outputText value="If Grade 1 equals zero than zero else not zero:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1 eq 0 ? 'zero' : 'not zero'}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1 eq 0 ? 'zero' : 'not zero'}"/><br/><br/>
         <h:outputText value="Grade 1 = 40:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1 = 40}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1 = 40}"/><br/><br/>
         <h:outputText value="Grade 1:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.grade1}"/><br/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.grade1}"/><br/><br/>
         <h:outputText value="Concatenation:"/><br/>
-        <h:outputLabel value="#{studentBeanRecord.firstName += ' ' += studentBeanRecord.lastName}"/><br/><br/>
-<!--        Reserved words: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod-->
+        <h:outputLabel
+                value="#{studentBeanRecord.student.firstName += ' ' += studentBeanRecord.student.lastName}"/><br/><br/>
+        <!--        Reserved words: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod-->
+        <h:outputText value="ENUMS:"/><br/>
+        <h:outputLabel value="#{studentBeanRecord.student.shift.equals(Shift.MORNING)}"/><br/><br/>
+        <h:outputText value="Arrays:"/><br/>
+        <h:outputLabel
+                value="#{studentBeanRecord.namesArray[0]} #{studentBeanRecord.namesArray[1]} #{studentBeanRecord.namesArray[2]}"/><br/><br/>
+        <!--        ui:repeat array-->
+        <h:outputText value="'For each' using ui:repeat"/><br/>
+        <ui:repeat value="#{studentBeanRecord.namesArray}" var="names">
+            <h:outputLabel value="#{names}"/><br/>
+        </ui:repeat><br/>
+
+        <!--        List-->
+        <h:outputText value="'For each' using list"/><br/>
+        <h:outputLabel
+                value="#{studentBeanRecord.namesList.get(0)} #{studentBeanRecord.namesList.get(1)} #{studentBeanRecord.namesList.get(2)}"/><br/><br/>
+        <ui:repeat value="#{studentBeanRecord.namesList}" var="names">
+            <h:outputLabel value="#{names}"/><br/>
+        </ui:repeat><br/>
+
+        <!--        SET-->
+        <h:outputText value="---------------- SET -------------------"/><br/>
+        <ui:repeat value="#{studentBeanRecord.namesSet}" var="names">
+            <h:outputLabel value="#{names}"/><br/>
+        </ui:repeat>
+
+        <!--        MAP-->
+        <h:outputText value="---------------- MAP -------------------"/><br/>
+<!--        <h:outputLabel value="#{studentBeanRecord.namesMap.get('One Piece')}"/><br/>-->
+<!--        <h:outputLabel value="#{studentBeanRecord.namesMap}"/><br/>-->
+        <ui:repeat value="#{studentBeanRecord.namesMap.entrySet().toArray()}" var="animes">
+            <h:outputLabel value="Title: #{animes.key}, Episodes: #{animes.value}"/><br/>
+        </ui:repeat>
     </f:view>
 </h:body>
 </html>

@@ -1,15 +1,14 @@
-package bean.student;
+package tiagobarbosa.marathonjsf.model;
 
-import javax.inject.Named;
-import java.io.Serializable;
+import tiagobarbosa.marathonjsf.model.enums.Shift;
 
-@Named
-public class StudentBeanRecord implements Serializable {
+public class Student {
     private String firstName = "Tiago";
     private String lastName = "Barbosa";
     private double grade1 = 20;
     private double grade2;
     private double grade3 = 10;
+    private Shift shift = Shift.MORNING;
 
     public String getFirstName() {
         return firstName;
@@ -49,5 +48,13 @@ public class StudentBeanRecord implements Serializable {
 
     public void setGrade3(double grade3) {
         this.grade3 = grade3;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
     }
 }
