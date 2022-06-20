@@ -9,3 +9,6 @@
   - Logic operations ✅
   - Objects and enumerations ✅
   - Collections ✅
+  - Methods ✅
+  - Javascript and CSS with expression language ✅
+  - Manipulating view with `rendered` and ajax ✅
