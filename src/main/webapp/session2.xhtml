@@ -7,13 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:body>
-        <h:outputLabel value="Second Page here."/>
-        <h:form>
-            <h:commandButton value="Back to main page" action="#{studentBeanRecord.goToIndex()}"/>
-        </h:form><br/><br/><br/>
-
-        <h:outputText value="--------------- Character Selected ---------------"/><br/>
-        <h:outputText value="#{testRequestBean.characterSelected}" style="font-size: xxx-large"/>
+        <h:outputText value="#{testApplicationBean.categoryList}" style="font-size: xxx-large"/><br/><br/>
+        <h:outputText value="--------------- Character Selected - Session Bean ---------------"/><br/>
+        <h:outputText value="#{testSessionBean.characterSelected}" style="font-size: xxx-large"/>
     </h:body>
 </h:head>
 </html>

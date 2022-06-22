@@ -2,6 +2,8 @@ package tiagobarbosa.marathonjsf.bean.student;
 
 import tiagobarbosa.marathonjsf.model.Student;
 
+import javax.el.LambdaExpression;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -53,6 +55,11 @@ public class StudentBeanRecord implements Serializable {
 
     public void hideGrades() {
         this.showGrades = false;
+    }
+
+    public void calculateCub(LambdaExpression le, long value) {
+        long result = (long) le.invoke(FacesContext.getCurrentInstance().getELContext(), value);
+        System.out.println(result);
     }
 
     public void showLinks() {
