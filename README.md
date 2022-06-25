@@ -18,3 +18,9 @@
   - SessionScoped ✅
   - ViewScoped ✅
   - ApplicationScoped ✅
+  - ConversationScoped ✅
+  - FlowScoped
+    - Configuration ✅
+    - Nested FlowScoped ✅
+    - FlowBuilder ✅
+    - Flow with annotations ✅
