@@ -6,16 +6,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <h:body>
-        <h:form>
-            <h:outputText value="#{testApplicationBean.categoryList}" style="font-size: xxx-large"/><br/><br/>
-            <h:outputText value="#{testViewBean.characterSelected}" style="font-size: xxx-large"/><br/><br/>
-            <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character"/>
-            <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character Foward"
-                             action="view2"/>
-            <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character Redirect"
-                             action="view2?faces-redirect=true"/>
-        </h:form>
-    </h:body>
 </h:head>
+<h:body>
+    <h:form>
+        <h:outputText value="#{testApplicationBean.categoryList}" style="font-size: xxx-large"/><br/><br/>
+        <h:outputText value="#{testApplicationBean.dependentBean.categoriesList}"
+                      style="font-size: xxx-large"/><br/><br/>
+        <h:outputText
+                value="Student login: #{testApplicationBean.sessionBean.student.firstName} #{testApplicationBean.sessionBean.student.lastName}"
+                style="font-size: xxx-large"/><br/><br/>
+        <h:outputText value="#{testViewBean.characterSelected}" style="font-size: xxx-large"/><br/><br/>
+        <h:outputText value="Dependent Bean -> #{testViewBean.dependentBean.characterSelected}"
+                      style="font-size: xxx-large"/><br/><br/>
+        <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character"/>
+        <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character Foward"
+                         action="view2"/>
+        <h:commandButton actionListener="#{testViewBean.selectCharacter()}" value="Select character Redirect"
+                         action="view2?faces-redirect=true"/>
+    </h:form>
+</h:body>
 </html>

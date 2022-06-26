@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="marathon-jsf">
+    <output-path>$PROJECT_DIR$/out/artifacts/marathon_jsf</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="marathon-jsf" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.20" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:11.0.0" />
+          <element id="library" level="project" name="Maven: org.omnifaces:omnifaces:3.13.3" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="marathon-jsf/web/Web" />
+    </root>
+  </artifact>
+</component>

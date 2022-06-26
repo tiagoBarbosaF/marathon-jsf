@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+</h:head>
+<f:metadata>
+    <f:viewParam name="name" value="#{communicationTest03Bean.name}"/>
+    <f:viewParam name="surname" value="#{communicationTest03Bean.surname}"/>
+    <f:event listener="#{communicationTest03Bean.init()}" type="preRenderView"/>
+</f:metadata>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="1">
+            <h:inputText value="#{communicationTest03Bean.name}"/>
+            <h:inputText value="#{communicationTest03Bean.surname}"/>
+            <h:commandButton value="Result" action="#{communicationTest03Bean.save()}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

@@ -6,26 +6,26 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <f:metadata>
-        <f:viewAction action="#{testConversationBean.init()}"/>
-    </f:metadata>
-    <h:body>
-        <h:form>
-            <h:outputText value="#{testApplicationBean.categoryList}" style="font-size: xxx-large"/><br/><br/>
-            <h:outputText value="#{testConversationBean.characterSelected}" style="font-size: xxx-large"/><br/><br/>
-            <h:commandButton actionListener="#{testConversationBean.selectCharacter()}" value="Select character"/>
-            <h:commandButton actionListener="#{testConversationBean.selectCharacter()}" value="Select character Foward"
-                             action="conversation2"/>
-            <h:commandButton actionListener="#{testConversationBean.selectCharacter()}"
-                             value="Select character Redirect"
-                             action="conversation2?faces-redirect=true"/>
-            <h:link outcome="conversation2" value="Go to conversation02"
-                    rendered="#{!testConversationBean.conversation.transient}">
-                <f:param name="cid" value="#{testConversationBean.conversation.id}"/>
-            </h:link>
-            <h:commandButton action="#{testConversationBean.endConversation()}"
-                             value="Finishing Conversation Scoped"/>
-        </h:form>
-    </h:body>
 </h:head>
+<f:metadata>
+    <f:viewAction action="#{testConversationBean.init()}"/>
+</f:metadata>
+<h:body>
+    <h:form>
+        <h:outputText value="#{testApplicationBean.categoryList}" style="font-size: xxx-large"/><br/><br/>
+        <h:outputText value="#{testConversationBean.characterSelected}" style="font-size: xxx-large"/><br/><br/>
+        <h:commandButton actionListener="#{testConversationBean.selectCharacter()}" value="Select character"/>
+        <h:commandButton actionListener="#{testConversationBean.selectCharacter()}" value="Select character Foward"
+                         action="conversation2"/>
+        <h:commandButton actionListener="#{testConversationBean.selectCharacter()}"
+                         value="Select character Redirect"
+                         action="conversation2?faces-redirect=true"/>
+        <h:link outcome="conversation2" value="Go to conversation02"
+                rendered="#{!testConversationBean.conversation.transient}">
+            <f:param name="cid" value="#{testConversationBean.conversation.id}"/>
+        </h:link>
+        <h:commandButton action="#{testConversationBean.endConversation()}"
+                         value="Finishing Conversation Scoped"/>
+    </h:form>
+</h:body>
 </html>

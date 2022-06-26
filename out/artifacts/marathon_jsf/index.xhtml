@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+    <p:importEnum type="tiagobarbosa.marathonjsf.model.enums.Shift" var="Shift" allSuffix="ALL_ENUM_VALUES"/>
+    <f:view>
+                <h:outputLabel value="Hello world, finally!"/><br/>
+                <h:outputText value="First name:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.firstName}"/><br/><br/>
+                <h:outputText value="Last name:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.lastName}"/><br/><br/>
+                <h:outputText value="Grade 1 equal Grade 2:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1 eq studentBeanRecord.student.grade2}"/><br/><br/>
+                <h:outputText value="Grade 1 equal Grade 2:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1 == studentBeanRecord.student.grade2}"/><br/><br/>
+                <h:outputText value="Grade 1 equal Grade 2 and first name is 'tiago':"/><br/>
+                <h:outputLabel
+                        value="#{studentBeanRecord.student.grade1 eq studentBeanRecord.student.grade2 and studentBeanRecord.student.firstName.equalsIgnoreCase('tiago')}"/><br/><br/>
+                <h:outputText value="Comparing grades"/><br/><br/>
+                <h:outputText value="Grade 1 less than and equal Grade 2:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1 le studentBeanRecord.student.grade2}"/><br/><br/>
+                <h:outputText value="If Grade 1 equals zero than zero else not zero:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1 eq 0 ? 'zero' : 'not zero'}"/><br/><br/>
+                <h:outputText value="Grade 1 = 40:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1 = 40}"/><br/><br/>
+                <h:outputText value="Grade 1:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.grade1}"/><br/><br/>
+                <h:outputText value="Concatenation:"/><br/>
+                <h:outputLabel
+                        value="#{studentBeanRecord.student.firstName += ' ' += studentBeanRecord.student.lastName}"/><br/><br/>
+                <!--        Reserved words: and, or, not, eq, ne, lt, gt, le, ge, true, false, null, instanceof, empty, div, mod-->
+                <h:outputText value="ENUMS:"/><br/>
+                <h:outputLabel value="#{studentBeanRecord.student.shift.equals(Shift.MORNING)}"/><br/><br/>
+                <h:outputText value="Arrays:"/><br/>
+                <h:outputLabel
+                        value="#{studentBeanRecord.namesArray[0]} #{studentBeanRecord.namesArray[1]} #{studentBeanRecord.namesArray[2]}"/><br/><br/>
+                <!--        ui:repeat array-->
+                <h:outputText value="'For each' using ui:repeat"/><br/>
+                <ui:repeat value="#{studentBeanRecord.namesArray}" var="names">
+                    <h:outputLabel value="#{names}"/><br/>
+                </ui:repeat><br/>
+
+                <!--        List-->
+                <h:outputText value="'For each' using list"/><br/>
+                <h:outputLabel
+                        value="#{studentBeanRecord.namesList.get(0)} #{studentBeanRecord.namesList.get(1)} #{studentBeanRecord.namesList.get(2)}"/><br/><br/>
+                <ui:repeat value="#{studentBeanRecord.namesList}" var="names">
+                    <h:outputLabel value="#{names}"/><br/>
+                </ui:repeat><br/>
+
+                <!--        SET-->
+                <h:outputText value="---------------- SET -------------------"/><br/>
+                <ui:repeat value="#{studentBeanRecord.namesSet}" var="names">
+                    <h:outputLabel value="#{names}"/><br/>
+                </ui:repeat>
+
+                <!--        MAP-->
+                <h:outputText value="---------------- MAP -------------------"/><br/>
+                <!--        <h:outputLabel value="#{studentBeanRecord.namesMap.get('One Piece')}"/><br/>-->
+                <!--        <h:outputLabel value="#{studentBeanRecord.namesMap}"/><br/>-->
+                <ui:repeat value="#{studentBeanRecord.namesMap.entrySet().toArray()}" var="animes">
+                    <h:outputLabel value="Title: #{animes.key}, Episodes: #{animes.value}"/><br/>
+                </ui:repeat><br/>
+
+                <!--        Methods-->
+                <h:outputText value="---------------- Methods -------------------"/><br/>
+                #{studentBeanRecord.execute()}
+                #{studentBeanRecord.execute(studentBeanRecord.student.firstName)}
+                <h:form>
+                    <h:commandButton value="Go to next page" action="#{studentBeanRecord.goToIndex2()}"/>
+                </h:form><br/><br/>
+                <!--        Print CSS with expression language-->
+                <h:outputText value="---------------- CSS with expression language -------------------"/><br/>
+                <ui:repeat value="#{studentBeanRecord.namesList}" var="names" varStatus="stats">
+                    <h:outputLabel value="#{stats.index} - #{names}"
+                                   style="color: #{stats.index mod 2 == 0 ? 'red' : 'green'}"/><br/>
+                </ui:repeat><br/>
+                <!--        JavaScript-->
+                <h:outputText value="---------------- Javascript -------------------"/><br/>
+                <h:commandButton value="Alert names"
+                                 onclick="alertNames('#{studentBeanRecord.student.firstName} #{studentBeanRecord.student.lastName}')"/><br/><br/><br/>
+                <!--        Show or hide itens-->
+                <h:form>
+                    <h:commandButton value="Show grades">
+                        <f:ajax render="gradesGrid" listener="#{studentBeanRecord.showGrades()}"/>
+                    </h:commandButton>
+                    <h:commandButton value="Hide grades">
+                        <f:ajax render="gradesGrid" listener="#{studentBeanRecord.hideGrades()}"/>
+                    </h:commandButton><br/>
+                    <h:panelGrid id="gradesGrid">
+                        <h:outputText value="#{studentBeanRecord.student.firstName}"/>
+                        <h:outputText value="#{studentBeanRecord.student.lastName}"/>
+                        <h:outputText value="#{studentBeanRecord.student.shift}"/>
+                        <h:outputText value="#{studentBeanRecord.student.grade1}" rendered="#{studentBeanRecord.showGrades}"/>
+                        <h:outputText value="#{studentBeanRecord.student.grade2}" rendered="#{studentBeanRecord.showGrades}"/>
+                        <h:outputText value="#{studentBeanRecord.student.grade3}" rendered="#{studentBeanRecord.showGrades}"/>
+                    </h:panelGrid><br/>
+                    <h:outputText value="----------------------------------------------------"/><br/>
+                    <h:commandButton value="Show Link">
+                        <f:ajax render="pgLink" listener="#{studentBeanRecord.showLinks()}"/>
+                    </h:commandButton>
+                    <h:commandButton value="Hide Link">
+                        <f:ajax render="pgLink" listener="#{studentBeanRecord.hideLinks()}"/>
+                    </h:commandButton>
+                    <h:panelGroup id="pgLink">
+                        <ui:fragment id="showLink" rendered="#{studentBeanRecord.showLinks}">
+                            <a href="https://www.google.com"
+                               target="_blank"
+                               style="font-size: 24px; font-family: 'Courier New',serif; font-weight: bolder; text-decoration: none">google.com</a>
+                        </ui:fragment>
+                    </h:panelGroup>
+        <!--        </h:form>-->
+
+        <!--        Lambdas-->
+        #{(sum -> sum + num)(20)}<br/>
+        #{((v1, v2, v3)->v1*v2*v3)(2,4,6)}<br/>
+        #{(x->x*x*x)(5)}<br/>
+        #{cubo=(x->x*x*x); cubo(30)}<br/>
+        <h:form>
+            <h:commandButton value="Calculate button"
+                             actionListener="#{studentBeanRecord.calculateCub((x->x*x*x),15)}"/>
+        </h:form><br/><br/>
+
+<!--        Lists-->
+        <h:outputText value="------------------- Lists ---------------------"/>
+        <ui:repeat value="#{['One', 'Two', 'Three']}" var="count">
+            <br/> #{count}
+        </ui:repeat><br/><br/>
+
+<!--        Set-->
+        <h:outputText value="------------------- Set ---------------------"/>
+        <ui:repeat value="#{{'One', 'Two', 'Two', 'two', 'Three'}}" var="countSet">
+            <br/> #{countSet}
+        </ui:repeat><br/><br/>
+
+<!--        Map-->
+        <h:outputText value="------------------- Map ---------------------"/>
+        <ui:repeat value="#{{'Best place': 'Home', 'Best course': 'DevDojo'}}" var="setMap">
+            <br/> #{setMap}
+        </ui:repeat><br/><br/>
+
+<!--        Stream-->
+        <h:outputText value="------------------- Stream ---------------------"/>
+        <c:set var="numberList" value="#{[1,2,3,4,5,6,7,8,9,10]}"/>
+        <ui:repeat value="#{numberList.stream().filter(v -> v > 5).toList()}" var="stream">
+            <br/> #{stream}
+        </ui:repeat><br/>
+        <h:outputText value="Average -> #{numberList.stream().average().get()}"/><br/>
+        <h:outputText value="Sum -> #{numberList.stream().sum()}"/><br/>
+        <h:outputText value="Filter and sum -> #{numberList.stream().filter(v -> v > 5).sum()}"/><br/>
+    </f:view>
+</h:body>
+<script type="text/javascript">
+    function alertNames(name) {
+        alert(name);
+    }
+</script>
+</html>

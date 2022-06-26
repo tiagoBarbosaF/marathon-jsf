@@ -1,5 +1,7 @@
 package tiagobarbosa.marathonjsf.bean.session;
 
+import tiagobarbosa.marathonjsf.model.Student;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -16,11 +18,16 @@ import static java.util.Arrays.asList;
 public class TestSessionBean implements Serializable {
     private List<String> characters = asList("Peter", "Iron Man", "Strange", "John");
     private List<String> characterSelected = new ArrayList<>();
+    private Student student;
 
     @PostConstruct
     public void init() {
         System.out.println("Entrou no PostConstruct do SessionScoped");
         characters = asList("Peter", "Iron Man", "Strange", "John");
+        login();
+    }
+    public void login(){
+        student = new Student();
     }
 
     public String logout() {
@@ -40,5 +47,13 @@ public class TestSessionBean implements Serializable {
 
     public void setCharacterSelected(List<String> characterSelected) {
         this.characterSelected = characterSelected;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
