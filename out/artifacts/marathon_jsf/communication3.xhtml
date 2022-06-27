@@ -3,6 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
@@ -10,15 +12,25 @@
 <f:metadata>
     <f:viewParam name="name" value="#{communicationTest03Bean.name}"/>
     <f:viewParam name="surname" value="#{communicationTest03Bean.surname}"/>
-    <f:event listener="#{communicationTest03Bean.init()}" type="preRenderView"/>
+    <f:viewParam name="date" value="#{communicationTest03Bean.date}">
+        <f:convertDateTime pattern="dd-MM-yyyy"/>
+    </f:viewParam>
+    <!--    <f:event listener="#{communicationTest03Bean.init()}" type="preRenderView"/>-->
+    <f:viewAction action="#{communicationTest03Bean.init()}"/>
 </f:metadata>
 <h:body>
-    <h:form>
+    <o:form includeRequestParams="true">
+        <p:growl id="growl">
+            <p:autoUpdate/>
+        </p:growl>
         <h:panelGrid columns="1">
-            <h:inputText value="#{communicationTest03Bean.name}"/>
+            <h:inputText value="#{communicationTest03Bean.name}" required="true" requiredMessage="Name is required">
+                <f:ajax event="blur"/>
+            </h:inputText>
             <h:inputText value="#{communicationTest03Bean.surname}"/>
+            <h:outputLabel value="#{communicationTest03Bean.date}"/>
             <h:commandButton value="Result" action="#{communicationTest03Bean.save()}"/>
         </h:panelGrid>
-    </h:form>
+    </o:form>
 </h:body>
 </html>

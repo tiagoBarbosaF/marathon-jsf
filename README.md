@@ -30,3 +30,6 @@
   - Communication
     - Parameters with `f:param` ✅
     - Parameters with `viewParam` ✅
+    - Adding attributes with `f:atribute` ✅
+    - Executing methods set with `setPropertyActionListener` ✅
+    - Passing attributes between beans with FlashScoped ✅

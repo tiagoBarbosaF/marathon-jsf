@@ -4,12 +4,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Date;
 
 @Named
 @ViewScoped
 public class CommunicationTest01Bean implements Serializable {
     private String name;
     private String surname;
+    private Date date = new Date();
 
     public void printAttributes() {
         String initParameter = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("images.location");
@@ -36,5 +38,13 @@ public class CommunicationTest01Bean implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
