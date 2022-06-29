@@ -33,3 +33,4 @@
     - Adding attributes with `f:atribute` ✅
     - Executing methods set with `setPropertyActionListener` ✅
     - Passing attributes between beans with FlashScoped ✅
+    - Cookies ✅
