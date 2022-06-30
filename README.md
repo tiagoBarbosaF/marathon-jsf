@@ -34,3 +34,5 @@
     - Executing methods set with `setPropertyActionListener` ✅
     - Passing attributes between beans with FlashScoped ✅
     - Cookies ✅
+    - InputSecret and call methods with arguments ✅
+    - Adding objects in the session dynamically ✅

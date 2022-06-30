@@ -2,6 +2,7 @@ package tiagobarbosa.marathonjsf.model;
 
 import tiagobarbosa.marathonjsf.model.enums.Shift;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -24,7 +25,7 @@ public class Student {
     }
 
     public static List<Student> studentList() {
-        return asList(new Student("John", "Snow", 80), new Student("Peter", "Park", 100), new Student("Tony", "Stark", 90));
+        return new ArrayList<>(asList(new Student("John", "Snow", 80), new Student("Peter", "Park", 100), new Student("Tony", "Stark", 90)));
     }
 
     public String getFirstName() {
